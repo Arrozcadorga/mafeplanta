@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Amor</title>
+<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --night:#1b2038; --night2:#2a2f52; --parch:#ecdfc2; --parch2:#e0cfa8;
+  --ink:#3a2a22; --wax:#9b1c2e; --wax2:#c23a4c; --gold:#c9a24a; --leaf:#5b7a45;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:inherit}
+html,body{margin:0;min-height:100%}
+body{
+  background:radial-gradient(ellipse at 50% 20%,var(--night2),var(--night) 70%) fixed;
+  color:var(--ink); font-family:"EB Garamond",Georgia,serif;
+  display:flex; align-items:center; justify-content:center; min-height:100vh; padding:24px 16px;
+}
+.hint{color:var(--parch);font-style:italic;text-align:center;margin-top:28px;opacity:.85;font-size:1.1rem}
+.kingdom{color:var(--gold);text-align:center;font-size:1.05rem;margin-bottom:26px;letter-spacing:.04em}
+
+/* envelope */
+#envWrap{width:min(92vw,420px);text-align:center}
+.env{position:relative;width:100%;aspect-ratio:7/5;background:var(--parch2);border-radius:6px;
+  box-shadow:0 18px 40px rgba(0,0,0,.45);cursor:pointer;border:0;padding:0;display:block;perspective:900px}
+.env::before{content:"";position:absolute;inset:0;border-radius:6px;
+  background:linear-gradient(to top right,transparent 49.5%,rgba(0,0,0,.08) 50%) left/50% 100% no-repeat,
+             linear-gradient(to top left,transparent 49.5%,rgba(0,0,0,.08) 50%) right/50% 100% no-repeat}
+.flap{position:absolute;left:0;top:0;width:100%;height:56%;background:var(--parch);
+  clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:transform .8s ease;
+  filter:drop-shadow(0 3px 2px rgba(0,0,0,.25))}
+.env.open .flap{transform:rotateX(180deg)}
+.seal{position:absolute;left:50%;top:56%;width:68px;height:68px;margin:-34px 0 0 -34px;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,var(--wax2),var(--wax) 65%);
+  box-shadow:0 4px 8px rgba(0,0,0,.4),inset 0 0 0 4px rgba(0,0,0,.12);
+  display:grid;place-items:center;color:#f3d9dd;font-family:"Pinyon Script",cursive;font-size:2rem;
+  transition:opacity .4s ease}
+.env.open .seal{opacity:0}
+.env:focus-visible{outline:3px solid var(--gold);outline-offset:6px}
+.to{position:absolute;left:0;right:0;bottom:12%;font-family:"Pinyon Script",cursive;font-size:1.7rem;color:var(--ink)}
+
+/* carta */
+#letter{display:none;width:min(94vw,640px);background:var(--parch);border-radius:4px;
+  box-shadow:0 24px 50px rgba(0,0,0,.5);padding:clamp(28px,6vw,56px) clamp(22px,6vw,56px);
+  border-top:6px solid var(--wax)}
+#letter.show{display:block;animation:rise .9s ease both}
+@keyframes rise{from{opacity:0;transform:translateY(40px) scale(.96)}to{opacity:1;transform:none}}
+.realm{text-align:center;color:var(--wax);font-size:1.05rem;letter-spacing:.05em;margin:0}
+h1{font-family:"Pinyon Script",cursive;font-weight:400;font-size:clamp(3.2rem,12vw,4.8rem);text-align:center;margin:.1em 0 .3em;color:var(--ink)}
+.orn{text-align:center;color:var(--leaf);font-size:1.3rem;margin-bottom:1.4em}
+.body p{font-size:clamp(1.12rem,3.8vw,1.28rem);line-height:1.7;margin:0 0 1.1em;max-width:62ch}
+.body em{color:var(--wax);font-style:italic;font-weight:500}
+.sign{margin-top:2em;text-align:right;font-size:1.15rem;line-height:1.5}
+.sign b{font-family:"Pinyon Script",cursive;font-weight:400;font-size:1.9rem;display:block}
+.date{margin-top:.8em;color:var(--wax);font-style:italic}
+@media (prefers-reduced-motion:reduce){.flap,.seal{transition:none}#letter.show{animation:none}}
+</style>
+</head>
+<body>
+<main>
+  <div id="envWrap">
+    <div class="kingdom">Arapoangas King</div>
+    <button class="env" id="env" aria-label="Abrir a carta">
+      <div class="flap"></div>
+      <div class="to">Para QueenPlant</div>
+      <div class="seal">A</div>
+    </button>
+    <p class="hint">Toque no selo para abrir</p>
+  </div>
+
+  <article id="letter">
+    <p class="realm">Reino de Arapoangas King</p>
+    <h1>Amor</h1>
+    <div class="orn">❦</div>
+    <div class="body">
+      <p>Olá, aqui sou eu. Quem sou eu? Bom, sou a mesma pessoa que escreveu o bilhete que foi entregue a você pelo meu funcionário da guarda real (Gabriel). Às vezes ele fala demais, então não se incomode com isso.</p>
+      <p>Ouvi falar que você seria a mulher mais bela do mundo, com cabelos vermelhos lindos, um sorriso encantador e a melhor personalidade do mundo todo, os gostos mais incríveis e também a cabeça mais enigmática, o que a torna ainda mais bela.</p>
+      <p>Eu gostaria de lhe fazer uma oferta: você se torna a minha esposa e, em troca, receberá felicidade, paz e, com certeza, muita alegria. E não vamos nos esquecer do principal: <em>a pessoa mais amada do mundo</em>.</p>
+      <p>Mas antes dessa oferta, tenho coisas a contar sobre a minha pessoa. Eu tenho um passado bem obscuro, e me arrependo todos os dias das coisas que fiz. Estou tentando o máximo possível melhorar, e uma coisa eu sei: o limite para melhorar é infinito. Por mais que eu tenha errado muito, quero tentar me redimir, criando agora um novo futuro com você, mostrando a você e às outras pessoas que sim, eu posso mudar. Meus erros passados foram horríveis, porém com você eu quero fazer diferente, quero realmente seguir em frente, quero te amar, te abraçar todos os dias e fazer muitas coisas para ver o seu sorriso belo.</p>
+      <p>Antes de tudo, vou fazer uma viagem que estava marcada para esta noite, então você pode retornar a sua resposta na próxima semana. Na verdade, pode retornar o tempo que quiser. Até a minha volta, espero que possamos conversar.</p>
+    </div>
+    <div class="sign">
+      <b>KingArroz</b>
+      De: KingArroz<br>Para: QueenPlant
+      <div class="date">08 de agosto de 2026</div>
+    </div>
+  </article>
+</main>
+<script>
+var env=document.getElementById('env');
+env.addEventListener('click',function(){
+  if(env.classList.contains('open'))return;
+  env.classList.add('open');
+  setTimeout(function(){
+    document.getElementById('envWrap').style.display='none';
+    document.getElementById('letter').classList.add('show');
+    window.scrollTo(0,0);
+  },900);
+});
+</script>
+</body>
+</html>
